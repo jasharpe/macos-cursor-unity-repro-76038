@@ -12,12 +12,13 @@ The matching Godot reproduction is at
 
 ## The defect
 
-Run a fullscreen build with a custom hardware cursor. Brush the **menu bar** at
-the top of the screen, then move back down. The custom cursor (a magenta disc)
-is replaced by the system arrow cursor, and it stays replaced.
+Run a fullscreen build with a custom cursor. Brush the **menu bar** at the top
+of the screen, then move back down. The custom cursor (a magenta disc) is
+replaced by the system arrow cursor, and it stays replaced.
 
-macOS replaces the cursor of the application after it closes the menu bar above
-a fullscreen window, and sends no event for the change.
+macOS resets the cursor state of the application after it closes the menu bar
+above a fullscreen window, and sends no event for the change. This affects both
+the cursor image and the visibility of the system cursor.
 
 ## Result
 
@@ -27,11 +28,13 @@ build:
 | Cursor mode | Behaviour |
 | --- | --- |
 | `CursorMode.Auto` (hardware cursor, the default) | **Reverts to the system arrow cursor.** Same as Godot. |
-| `CursorMode.ForceSoftware` | Not affected, because Unity draws the cursor itself and never uses `NSCursor`. |
+| `CursorMode.ForceSoftware` | **Also affected, and arguably worse.** Unity keeps drawing its own cursor, but macOS also shows the system arrow cursor, so the screen has two cursors. |
 
-The `ForceSoftware` result matters: an engine can appear immune to this defect
-simply by not using the operating system cursor. Press `M` in the build to
-switch between the two and compare.
+Both modes fail, which shows that macOS resets more than the cursor image. A
+software cursor needs the operating system cursor to stay hidden. macOS makes
+the hidden cursor visible again after it closes the menu bar, and the
+application gets no event for this change either. Press `M` in the build to
+switch between the two modes and compare.
 
 ## How to build and run
 
