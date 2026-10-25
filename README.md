@@ -38,8 +38,8 @@ build:
 
 Both modes fail, which shows that macOS resets more than the cursor image. A
 software cursor needs the operating system cursor to stay hidden. macOS makes
-the hidden cursor visible again after it closes the menu bar, and the
-application gets no event for this change either. Press `M` in the build to
+the hidden cursor visible again when the pointer leaves the view at the top and
+returns, and the application gets no event for this change either. Press `M` in the build to
 switch between the two modes and compare.
 
 ## How to build and run
