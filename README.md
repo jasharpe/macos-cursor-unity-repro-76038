@@ -12,13 +12,19 @@ The matching Godot reproduction is at
 
 ## The defect
 
-Run a fullscreen build with a custom cursor. Brush the **menu bar** at the top
-of the screen, then move back down. The custom cursor (a magenta disc) is
-replaced by the system arrow cursor, and it stays replaced.
+Run a fullscreen build with a custom cursor. Move the pointer into the band at
+the **top of the screen**, then move back down. The custom cursor (a magenta
+disc) is replaced by the system arrow cursor, and it stays replaced.
 
-macOS resets the cursor state of the application after it closes the menu bar
-above a fullscreen window, and sends no event for the change. This affects both
-the cursor image and the visibility of the system cursor.
+The **menu bar is not involved**. You do not need to reach the top edge of the
+screen or make the menu bar appear. In fullscreen the content view does not
+cover the whole screen, and a band of approximately 37 points at the top
+belongs to a window owned by macOS. Crossing that line and coming back is
+enough.
+
+macOS resets the cursor state of the application when the pointer leaves the
+view at the top and returns, and sends no event for the change. This affects
+both the cursor image and the visibility of the system cursor.
 
 ## Result
 

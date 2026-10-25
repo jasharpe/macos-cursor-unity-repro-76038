@@ -73,6 +73,6 @@ public class CursorTest : MonoBehaviour {
 			"1 windowed   2 fullscreen window   3 exclusive fullscreen\n" +
 			"V visible    H hidden   C locked   N confined\n" +
 			"M hardware/software cursor    R re-apply cursor    ESC quit\n\n" +
-			"Brush the menu bar at the top, then move back down.");
+			"Move the pointer to the top of the screen, then back down.");
 	}
 }
