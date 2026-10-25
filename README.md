@@ -73,12 +73,12 @@ Unity version, screen mode, resolution and cursor state are drawn on screen.
 
 ## Related reports
 
-- [Chromium issue 430116472](https://issues.chromium.org/issues/430116472) —
+- [Chromium issue 430116472](https://issues.chromium.org/issues/430116472).
   Chrome logged no `updateCursor` call when the cursor changed, and concluded
   the change comes from a window the application does not own.
-- [Deskflow PR #10184](https://github.com/deskflow/deskflow/pull/10184) — the
+- [Deskflow PR #10184](https://github.com/deskflow/deskflow/pull/10184) reports the
   same defect on macOS 26, worked around with an undocumented menu bar
   notification.
-- [Apple Developer Forums thread 803069](https://developer.apple.com/forums/thread/803069) —
-  custom cursors revert when they touch the top screen edge in fullscreen
-  applications.
+- [Apple Developer Forums thread 803069](https://developer.apple.com/forums/thread/803069)
+  reports that custom cursors revert when they touch the top screen edge in
+  fullscreen applications.
